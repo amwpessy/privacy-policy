@@ -1,30 +1,422 @@
-Privacy Policy / 隐私政策
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — XiYing Crypto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-Last updated: 2026.6.10
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --border:    #21282f;
+    --gold:      #f0a500;
+    --orange:    #f97316;
+    --text:      #e6edf3;
+    --muted:     #7d8590;
+    --subtle:    #30363d;
+    --green:     #3fb950;
+    --radius:    10px;
+  }
 
-XiYing Crypto ("the App") respects your privacy. This policy explains how we handle information.
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-1. Information We Collect
-The App does NOT collect, store, or transmit any personal information. We do not require account registration, and we do not track your identity.
+  html { scroll-behavior: smooth; }
 
-2. Watchlist Data
-Your custom watchlist is stored locally on your device only. It is never uploaded to any server.
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-3. Third-Party Data Sources
-The App displays public market data retrieved from third-party APIs (such as CoinGecko). These requests do not include any personal information about you.
+  /* 顶部比特币橙渐变线 */
+  body::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, #f97316 0%, #f0a500 40%, #eab308 70%, transparent 100%);
+  }
 
-4. No Analytics or Advertising
-The App contains no third-party analytics, tracking, or advertising SDKs.
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
 
-5. Children's Privacy
-The App is not directed to children under 13 and does not knowingly collect data from them.
+  /* Header */
+  .header { margin-bottom: 52px; }
 
-6. Changes
-We may update this policy. Changes will be posted on this page.
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    background: rgba(240,165,0,0.1);
+    border: 1px solid rgba(240,165,0,0.25);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-7. Contact
-For questions, contact: amwpessy@gmail.com
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
 
----
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
 
-本应用尊重您的隐私。本应用不收集、存储或传输任何个人信息，无需注册账号。您的自选列表仅保存在本地设备，不会上传至任何服务器。应用展示的行情数据来自第三方公开接口（如 CoinGecko），请求不包含您的任何个人信息。本应用不含任何第三方分析、追踪或广告组件。
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, #f97316, #f0a500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .meta {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* 分隔线 */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 44px 0;
+  }
+
+  /* 数据摘要卡片 */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 52px;
+  }
+
+  .summary-item {
+    background: var(--surface);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .summary-item .icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .summary-item .label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .summary-item .value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  /* 章节 */
+  .section {
+    margin-bottom: 36px;
+    padding-left: 20px;
+    border-left: 2px solid var(--subtle);
+    transition: border-color 0.2s;
+  }
+
+  .section:hover { border-left-color: var(--gold); }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  p, li {
+    color: #adbac7;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+
+  ul li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* 高亮块 */
+  .highlight {
+    background: rgba(63, 185, 80, 0.07);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #adbac7;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .highlight::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* 联系卡片 */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 8px;
+  }
+
+  .contact-card p { margin-bottom: 6px; }
+
+  .contact-card a {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .contact-card a:hover { text-decoration: underline; }
+
+  /* 中文段落 */
+  .zh {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .zh-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .zh p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #7d8590;
+    margin-bottom: 10px;
+  }
+
+  /* footer */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .app-mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .app-mark .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f97316, #f0a500);
+  }
+
+  @media (max-width: 540px) {
+    .summary { grid-template-columns: 1fr; }
+    .wrap { padding: 40px 16px 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .badge::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div class="badge">Privacy Policy</div>
+    <h1>We don't collect<br><span>your data.</span></h1>
+    <p class="meta">XiYing Crypto &nbsp;·&nbsp; Effective: June 2026 &nbsp;·&nbsp; v1.0</p>
+  </header>
+
+  <div class="summary">
+    <div class="summary-item">
+      <span class="icon">🔒</span>
+      <span class="label">Personal Data</span>
+      <span class="value">Not Collected</span>
+    </div>
+    <div class="summary-item">
+      <span class="icon">📡</span>
+      <span class="label">Tracking</span>
+      <span class="value">None</span>
+    </div>
+    <div class="summary-item">
+      <span class="icon">📢</span>
+      <span class="label">Advertising</span>
+      <span class="value">None</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-num">01</span>
+    <h2>Information We Collect</h2>
+    <p>XiYing Crypto does <strong>not</strong> collect, store, or transmit any personal information. We do not require you to create an account, and we never ask for your name, email address, location, or any other identifying information.</p>
+    <div class="highlight">
+      No personal data is collected at any point while using this app.
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-num">02</span>
+    <h2>Watchlist &amp; Local Storage</h2>
+    <p>Your custom watchlist (coins you star and save) is stored <strong>exclusively on your own device</strong> using standard iOS local storage. This data:</p>
+    <ul>
+      <li>Never leaves your device</li>
+      <li>Is never sent to our servers (we have none)</li>
+      <li>Is not shared with any third party</li>
+      <li>Can be removed at any time by deleting the app</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="section-num">03</span>
+    <h2>Third-Party Data Sources</h2>
+    <p>The app fetches public market data from third-party APIs, including CoinGecko. These network requests contain no personal information about you — only standard query parameters to retrieve public price data. Please refer to <a href="https://www.coingecko.com/en/privacy" style="color:var(--gold)">CoinGecko's Privacy Policy</a> for details on how they handle requests.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-num">04</span>
+    <h2>Analytics &amp; Advertising</h2>
+    <p>XiYing Crypto contains <strong>no</strong> third-party analytics SDKs, crash reporting services, advertising networks, or behavioral tracking of any kind. We do not use Firebase, Amplitude, Mixpanel, or any similar service.</p>
+    <div class="highlight">
+      The app is completely ad-free and tracking-free.
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-num">05</span>
+    <h2>Children's Privacy</h2>
+    <p>This app is not directed to children under the age of 13. Since we collect no personal data from anyone, we do not knowingly collect data from children either.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-num">06</span>
+    <h2>Data Security</h2>
+    <p>All network requests made by this app use HTTPS encryption. Since we collect no personal data and operate no servers storing user information, there is no user data at risk of breach.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-num">07</span>
+    <h2>Changes to This Policy</h2>
+    <p>If this privacy policy changes in the future, the updated version will be posted at this URL with a revised effective date. Continued use of the app after any change constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-num">08</span>
+    <h2>Contact</h2>
+    <div class="contact-card">
+      <p>Questions about this privacy policy? Reach us at:</p>
+      <a href="mailto:your@email.com">your@email.com</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="zh">
+    <span class="zh-label">中文摘要 · Chinese Summary</span>
+    <p>稀赢数字货币（XiYing Crypto）尊重并保护您的隐私。以下是本隐私政策的中文摘要：</p>
+    <p><strong style="color:var(--text)">不收集个人信息：</strong>本应用不收集、存储或传输任何个人信息，无需注册账号，不请求您的姓名、邮箱、位置或任何识别性信息。</p>
+    <p><strong style="color:var(--text)">自选列表仅存本地：</strong>您添加的自选币种仅保存在您的设备本地，不会上传至任何服务器，删除应用即可清除所有数据。</p>
+    <p><strong style="color:var(--text)">第三方数据来源：</strong>行情数据来自 CoinGecko 等公开接口，相关网络请求不包含您的任何个人信息。</p>
+    <p><strong style="color:var(--text)">无广告、无追踪：</strong>本应用不含任何第三方广告、分析或行为追踪组件，完全无广告。</p>
+  </div>
+
+  <footer>
+    <div class="app-mark">
+      <span class="dot"></span>
+      XiYing Crypto
+    </div>
+    <p>© 2026 · All rights reserved · <a href="mailto:your@email.com" style="color:var(--muted)">your@email.com</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
